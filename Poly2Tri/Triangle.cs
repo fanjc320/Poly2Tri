@@ -33,10 +33,10 @@ namespace Poly2Tri
             return Points[0].Equals(p) || Points[1].Equals(p) || Points[2].Equals(p);
         }
 
-        public bool Contains(Edge e)
-        {
-            return Contains(e.P) && Contains(e.Q);
-        }
+        //public bool Contains(Edge e)
+        //{
+        //    return Contains(e.P) && Contains(e.Q);
+        //}
 
         public bool Contains(TriPoint p, TriPoint q)
         {
@@ -94,29 +94,29 @@ namespace Poly2Tri
             }
         }
 
-        public void Clear()
-        {
-            Triangle t;
-            for (int i = 0; i < 3; i++)
-            {
-                t = _neighbours[i];
-                if (t != null)
-                    t.ClearNeighbor(this);
-            }
+        //public void Clear()
+        //{
+        //    Triangle t;
+        //    for (int i = 0; i < 3; i++)
+        //    {
+        //        t = _neighbours[i];
+        //        if (t != null)
+        //            t.ClearNeighbor(this);
+        //    }
 
-            ClearNeighbors();
-            Points[0] = Points[1] = Points[2] = null;
-        }
+        //    ClearNeighbors();
+        //    Points[0] = Points[1] = Points[2] = null;
+        //}
 
-        public void ClearNeighbor(Triangle triangle)
-        {
-            if (_neighbours[0] == triangle)
-                _neighbours[0] = null;
-            else if (_neighbours[1] == triangle)
-                _neighbours[1] = null;
-            else
-                _neighbours[2] = null;
-        }
+        //public void ClearNeighbor(Triangle triangle)
+        //{
+        //    if (_neighbours[0] == triangle)
+        //        _neighbours[0] = null;
+        //    else if (_neighbours[1] == triangle)
+        //        _neighbours[1] = null;
+        //    else
+        //        _neighbours[2] = null;
+        //}
 
         public void ClearNeighbors()
         {
@@ -138,12 +138,12 @@ namespace Poly2Tri
         /// Legalized triangle by rotating clockwise around point(0)
         /// </summary>
         /// <param name="point"></param>
-        public void Legalize(TriPoint point)
-        {
-            Points[1] = Points[0];
-            Points[0] = Points[2];
-            Points[2] = point;
-        }
+        //public void Legalize(TriPoint point)
+        //{
+        //    Points[1] = Points[0];
+        //    Points[0] = Points[2];
+        //    Points[2] = point;
+        //}
 
         /// <summary>
         /// Legalize triagnle by rotating clockwise around oPoint
@@ -221,10 +221,10 @@ namespace Poly2Tri
             ConstrainedEdge[index] = true;
         }
 
-        public void MarkConstrainedEdge(Edge edge)
-        {
-            MarkConstrainedEdge(edge.P, edge.Q);
-        }
+        //public void MarkConstrainedEdge(Edge edge)
+        //{
+        //    MarkConstrainedEdge(edge.P, edge.Q);
+        //}
 
         /// <summary>
         /// Mark edge as constrained

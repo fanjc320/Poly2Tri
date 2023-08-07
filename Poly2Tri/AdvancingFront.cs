@@ -23,6 +23,7 @@ namespace Poly2Tri
         public Node LocateNode(double x)
         {
             Node node = _search_node;
+            Console.WriteLine("AdvancingFront LocateNode:" + x + " node.v:" + node.Value);
 
             if (x < node.Value)
             {
@@ -56,6 +57,7 @@ namespace Poly2Tri
             Node node = _search_node;
             double nx = node.Point.X;
 
+            Console.WriteLine("AdvancingFront LocatePoint point:" + point.ToString() + " node.point:" + node.Point.ToString());
             if (px == nx)
             {
                 if (point != node.Point)
@@ -88,6 +90,7 @@ namespace Poly2Tri
             if (node != null)
                 _search_node = node;
 
+            Console.WriteLine("AdvancingFront return node:" + node.Point.ToString());
             return node;
         }
     }

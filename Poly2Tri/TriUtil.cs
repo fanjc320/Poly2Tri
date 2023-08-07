@@ -12,17 +12,17 @@ namespace Poly2Tri
         public const double PI_div2 = 1.57079632679489661923;
         public const double EPSILON = 1e-12;
 
-        public static Winding Orient2d(TriPoint pa, TriPoint pb, TriPoint pc)
+        public static Winding Orient2d(TriPoint pa, TriPoint pb, TriPoint pc)//pa->pb->pc三个点的位置关系
         {
             double detleft = (pa.X - pc.X) * (pb.Y - pc.Y);
             double detright = (pa.Y - pc.Y) * (pb.X - pc.X);
             double val = detleft - detright;
             if (val > -EPSILON && val < EPSILON)
-                return Winding.Collinear;
+                return Winding.Collinear;//共线
             else if (val > 0)
-                return Winding.CCW;
+                return Winding.CCW;//逆时针
 
-            return Winding.CW;
+            return Winding.CW;//顺时针
         }
 
         public static bool InScanArea(TriPoint pa, TriPoint pb, TriPoint pc, TriPoint pd)

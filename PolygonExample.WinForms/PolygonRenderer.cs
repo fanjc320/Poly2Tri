@@ -55,15 +55,15 @@ namespace PolygonExample
             TriPointsToArray(points, out _points);
         }
 
-        public void SetHoles(IList<Shape> holes)
-        {
-            foreach(Shape h in holes)
-            {
-                PointF[] hPoints = new PointF[h.Points.Count];
-                TriPointsToArray(h.Points, out hPoints);
-                _holePoints.Add(hPoints);
-            }
-        }
+        //public void SetHoles(IList<Shape> holes)
+        //{
+        //    foreach(Shape h in holes)
+        //    {
+        //        PointF[] hPoints = new PointF[h.Points.Count];
+        //        TriPointsToArray(h.Points, out hPoints);
+        //        _holePoints.Add(hPoints);
+        //    }
+        //}
 
         public void SetPoints(Shape s)
         {

@@ -20,7 +20,7 @@ namespace Poly2Tri
         /// A list of subtraction shapes fully contained inside this shape.<para/>
         /// Shapes added to this list will be used to create holes during triangulation. Any that are outside or intersect the shape outline are invalid.
         /// </summary>
-        public readonly List<Shape> Holes = new List<Shape>();
+        //public readonly List<Shape> Holes = new List<Shape>();
 
         public Rectangle Bounds { get; private set; }
 
@@ -114,29 +114,29 @@ namespace Poly2Tri
         /// Triangulates the shape and adds all of the points (in triangle list layout) to the provided output.
         /// </summary>
         /// <param name="output">The output list.</param>
-        public void Triangulate(IList<Vector2> output, Vector2 offset, float scale = 1.0f)
-        {
-            Points.Reverse();
-            SweepContext tcx = new SweepContext();
-            tcx.AddPoints(Points);
+        //public void Triangulate(IList<Vector2> output, Vector2 offset, float scale = 1.0f)
+        //{
+        //    Points.Reverse();
+        //    SweepContext tcx = new SweepContext();
+        //    tcx.AddPoints(Points);
 
-            // Hole edges
-            foreach (Shape h in Holes)
-                tcx.AddHole(h.Points);
+        //    // Hole edges
+        //    //foreach (Shape h in Holes)
+        //    //    tcx.AddHole(h.Points);
 
-            tcx.InitTriangulation();
-            Sweep sweep = new Sweep();
-            sweep.Triangulate(tcx);
+        //    tcx.InitTriangulation();
+        //    Sweep sweep = new Sweep();
+        //    sweep.Triangulate(tcx);
 
-            List<Triangle> triangles = tcx.GetTriangles();
-            foreach (Triangle tri in triangles)
-            {
-                //tri.ReversePointFlow();
-                output.Add(((Vector2)tri.Points[0] * scale) + offset);
-                output.Add(((Vector2)tri.Points[2] * scale) + offset);
-                output.Add(((Vector2)tri.Points[1] * scale) + offset);
-            }
-        }
+        //    List<Triangle> triangles = tcx.GetTriangles();
+        //    foreach (Triangle tri in triangles)
+        //    {
+        //        //tri.ReversePointFlow();
+        //        output.Add(((Vector2)tri.Points[0] * scale) + offset);
+        //        output.Add(((Vector2)tri.Points[2] * scale) + offset);
+        //        output.Add(((Vector2)tri.Points[1] * scale) + offset);
+        //    }
+        //}
 
         /// <summary>
         /// Triangulates the shape and adds all of the triangles to the provided output.
@@ -147,8 +147,8 @@ namespace Poly2Tri
             SweepContext tcx = new SweepContext();
             tcx.AddPoints(Points);
 
-            foreach (Shape p in Holes)
-                tcx.AddHole(p.Points);
+            //foreach (Shape p in Holes)
+            //    tcx.AddHole(p.Points);
 
             tcx.InitTriangulation();
             Sweep sweep = new Sweep();
@@ -164,8 +164,8 @@ namespace Poly2Tri
             for (int i = 0; i < Points.Count; i++)
                 Points[i] *= scale;
 
-            foreach (Shape h in Holes)
-                h.Scale(scale);
+            //foreach (Shape h in Holes)
+            //    h.Scale(scale);
         }
 
         public void Scale(Vector2 scale)
@@ -173,8 +173,8 @@ namespace Poly2Tri
             for (int i = 0; i < Points.Count; i++)
                 Points[i] *= scale;
 
-            foreach (Shape h in Holes)
-                h.Scale(scale);
+            //foreach (Shape h in Holes)
+            //    h.Scale(scale);
         }
 
         public void Offset(Vector2 offset)
@@ -182,8 +182,8 @@ namespace Poly2Tri
             for (int i = 0; i < Points.Count; i++)
                 Points[i] += offset;
 
-            foreach (Shape h in Holes)
-                h.Offset(offset);
+            //foreach (Shape h in Holes)
+            //    h.Offset(offset);
         }
 
         public void ScaleAndOffset(Vector2 offset, float scale)
@@ -194,8 +194,8 @@ namespace Poly2Tri
                 Points[i] += offset;
             }
 
-            foreach (Shape h in Holes)
-                h.ScaleAndOffset(offset, scale);
+            //foreach (Shape h in Holes)
+            //    h.ScaleAndOffset(offset, scale);
         }
 
         public void ScaleAndOffset(Vector2 offset, Vector2 scale)
@@ -206,8 +206,8 @@ namespace Poly2Tri
                 Points[i] += offset;
             }
 
-            foreach (Shape h in Holes)
-                h.ScaleAndOffset(offset, scale);
+            //foreach (Shape h in Holes)
+            //    h.ScaleAndOffset(offset, scale);
         }
 
         public bool Contains(Shape shape)
@@ -224,11 +224,11 @@ namespace Poly2Tri
 
         public bool Contains(Vector2 point)
         {
-            for (int i = 0; i < Holes.Count; i++)
-            {
-                if (Holes[i].Contains(point))
-                    return false;
-            }
+            //for (int i = 0; i < Holes.Count; i++)
+            //{
+            //    if (Holes[i].Contains(point))
+            //        return false;
+            //}
 
             // Thanks to: https://codereview.stackexchange.com/a/108903
             int polygonLength = Points.Count;

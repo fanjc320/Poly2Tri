@@ -24,10 +24,10 @@ namespace Poly2Tri
             FinalizationPolygon(tcx);
         }
 
-        public void Reset()
-        {
-            _nodes.Clear();
-        }
+        //public void Reset()
+        //{
+        //    _nodes.Clear();
+        //}
 
         private void SweepPoints(SweepContext tcx)
         {
@@ -176,7 +176,7 @@ namespace Poly2Tri
             Triangle triangle = new Triangle(point, node.Point, node.Next.Point);
 
             triangle.MarkNeighbor(node.Triangle);
-            tcx.AddToMap(triangle);
+            //tcx.AddToMap(triangle);
 
             Node new_node = new Node(point);
             _nodes.Add(new_node);
@@ -198,8 +198,9 @@ namespace Poly2Tri
             triangle.MarkNeighbor(node.Prev.Triangle);
             triangle.MarkNeighbor(node.Triangle);
 
-            tcx.AddToMap(triangle);
+            //tcx.AddToMap(triangle);
 
+            //这两行代码好像是删除掉链条上本node
             // Update the advancing front
             node.Prev.Next = node.Next;
             node.Next.Prev = node.Prev;
@@ -301,23 +302,6 @@ namespace Poly2Tri
             double ax = node.Point.X - node.Next.Next.Point.X;
             double ay = node.Point.Y - node.Next.Next.Point.Y;
             return Math.Atan2(ay, ax);
-        }
-
-        private double HoleAngle(Node node)
-        {
-            /* Complex plane
-            * ab = cosA +i*sinA
-            * ab = (ax + ay*i)(bx + by*i) = (ax*bx + ay*by) + i(ax*by-ay*bx)
-            * atan2(y,x) computes the principal value of the argument function
-            * applied to the complex number x+iy
-            * Where x = ax*bx + ay*by
-            *       y = ax*by - ay*bx
-            */
-            double ax = node.Next.Point.X - node.Point.X;
-            double ay = node.Next.Point.Y - node.Point.Y;
-            double bx = node.Prev.Point.X - node.Point.X;
-            double by = node.Prev.Point.Y - node.Point.Y;
-            return Math.Atan2(ax * by - ay * bx, ax * bx + ay * by);
         }
 
         private bool Legalize(SweepContext tcx, Triangle t)

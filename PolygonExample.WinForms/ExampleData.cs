@@ -76,5 +76,25 @@ namespace PolygonExample
                 new Vector2(1114.8304,1605.018),
                 new Vector2(563.42839,2350.2286),
             };
+
+        public static readonly Vector2[] PointsTest = new Vector2[]
+            {
+                 
+
+                // new Vector2(0,0),
+                //new Vector2(100,200),
+                //new Vector2(200,0),
+                //new Vector2(100,100),
+                //new Vector2(0,0),
+
+                
+                  new Vector2(0,0),
+                  new Vector2(100,100),
+                new Vector2(200,0),
+                new Vector2(150,200),
+                new Vector2(100,150),
+                new Vector2(50,200),
+                new Vector2(0,0),
+            };
     }
 }
